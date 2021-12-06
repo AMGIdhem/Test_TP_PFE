@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>Inscription</title>
+</head>
+<body>
+<div layout:fragment="pageContent" class="container">
+Inscription
+	<form th:action="@{addUser}" method="post" th:object="${user}">
+		<select name="role" id="target" onchange="showDiv(this)">
+<!-- 			<option th:each="r:${roles}" th:value="${r.role}" th:text="${r.role}"></option> -->
+			<option value="ANNONCEUR" >ANNONCEUR</option>
+			<option value="ETUDIANT" >ETUDIANT</option>
+		</select> <br>
+		<label> Username </label> <input type="text" th:field="*{username}"/>
+		<span th:errors="*{username}"></span> <br>
+		<label> Password </label> <input type="password" th:field="*{password}"/>
+		<span th:errors="*{password}"></span> <br>
+		<label> Confirmer Password </label> <input type="password" th:field="*{matchingPassword}"/> <br>
+		<label> Email </label> <input type="text" th:field="*{email}"/> 
+		<span th:errors="*{email}"></span><br>
+		<label> Téléphone </label> <input type="text" th:field="*{tel}"/> 
+		<span th:errors="*{tel}"></span><br>
+		<label> Date de naissance </label> <input type="date" th:field="*{dateNaissance}"/> <br>
+		<label> Nationalité </label> <input type="text" th:field="*{nationalite}"/> 
+		<span th:errors="*{nationalite}"></span><br>
+		<label> Adresse </label> <input type="text" th:field="*{adresse}"/>
+			<div id="hidden_div1" style="display:none;">
+				<label> CIN </label> <input type="text" th:field="*{cin}" >
+			</div>
+			<div id="hidden_div2">
+				<label> Emploi </label> <input type="text" th:field="*{emploi}" >
+			</div> 
+		<span th:errors="*{adresse}"></span><br>
+<!-- 		<label> Revenus mensuels nets (jobs étudiants, etc.) </label> <input type="text" th:field="*{revenu}"/> <br> -->
+		<button type="submit">S'inscrire</button>
+	</form>
+	<span>Si vous avez déja un compte :</span> <a th:href="@{login}"> identifiez-vous </a>
+	<script type="text/javascript">
+function showDiv(select){
+   if(select.value=='ETUDIANT'){
+	document.getElementById('hidden_div2').style.display = "none";
+    document.getElementById('hidden_div1').style.display = "block";
+   } else if(select.value=='ANNONCEUR') {
+	document.getElementById('hidden_div1').style.display = "none";
+    document.getElementById('hidden_div2').style.display = "block";
+   }
+} 
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div layout:fragment="pageContent" class="container">
+	<div class="card ">
+	  <div class="card-header text-center">
+	    Informations sur l'annonce
+	  </div>
+	  <div class="card-body">
+	  	<!-- Ajouter des fontsawesome --><div style="font-size: 25px;" th:text="${annonce.titre}"></div>
+	  	<div class="row text-center">
+	  		<div class="col-md-5">
+	  			Image 1 : <div class="col-md-5"><img style="border: 3px solid #555;;" th:src="@{getPhoto(id=${annonce.id})}" width="420" height="300"></div>
+				
+				Image 3 : <div class="col-md-5"><img style="border: 3px solid #555;;" th:src="@{getPhoto2(id=${annonce.id})}" width="420" height="300"></div>
+	  		</div>
+	  		
+	  		<div class="col-md-5">
+	  			Image 2 : <div class="col-md-5"><img style="border: 3px solid #555;;" th:src="@{getPhoto1(id=${annonce.id})}" width="420" height="300"></div>
+	  		</div>
+	  	
+	  	</div>
+	  
+	  
+	  
+	    
+	    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	    <a href="#" class="btn btn-primary">Go somewhere</a>
+	  </div>
+	  <div class="card-footer text-muted">
+	    StudEx
+	  </div>
+	</div>
+	
+	
+	
+	
+	
+
+
+</div>
+</body>
+</html>

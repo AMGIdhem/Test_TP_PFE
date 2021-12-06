@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>Inscription</title>
+<style>
+*{
+font-family:cursive
+}
+.register{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    margin-top: 3%;
+    padding: 3%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}</style>
+</head>
+<body>
+<div layout:fragment="pageContent" class="container">
+
+<div class="container register">
+<form th:action="@{addUser}" method="post" th:object="${user}">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3>Bienvenue</h3>
+                        <p>à la premiére plateforme pour logement etudiant au Maroc !</p>
+                        <a th:href="@{login}"><input type="button" name="" value="Se connecter"/></a><br/>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item" >
+                                <select style="width: 210px;" class="nav-link active" name="role" id="target" onchange="showDiv(this)">
+						<!-- 			<option th:each="r:${roles}" th:value="${r.role}" th:text="${r.role}"></option> -->
+									<option value="ANNONCEUR" >ANNONCEUR</option>
+									<option value="ETUDIANT" >ETUDIANT</option>
+								</select>
+                            </li>
+                           
+                        </ul>
+                        <br>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Créer votre compte</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <!--<input type="text" class="form-control" placeholder="First Name *" value="" />-->
+                                            <input type="text" class="form-control" placeholder="Username *" th:field="*{username}" required/>
+											<span th:errors="*{username}"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <!--<input type="text" class="form-control" placeholder="First Name *" value="" />-->
+                                            <input type="text" class="form-control" placeholder="Nom *" th:field="*{nom}" required/>
+											
+                                        </div>
+                                        <div class="form-group">
+                                            <!--<input type="text" class="form-control" placeholder="First Name *" value="" />-->
+                                            <input type="text" class="form-control" placeholder="Prénom *" th:field="*{prenom}" required/>
+											
+                                        </div>
+                                        <div class="form-group">
+                                            <!--<input type="password" class="form-control"  placeholder="Confirm Password *" value="" />-->
+                                        	<input type="email" class="form-control"  placeholder="Email *" th:field="*{email}"/> 
+											<span th:errors="*{email}"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <!--<input type="text" class="form-control" placeholder="Last Name *" value="" />-->
+                                            <input type="password" class="form-control" placeholder="Mot de passe *" th:field="*{password}" required/>
+											<span th:errors="*{password}"></span>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <!--<input type="password" class="form-control" placeholder="Password *" value="" />-->
+                                        	<input type="password" class="form-control" placeholder="Confirmer mot de passe *" th:field="*{matchingPassword}" required/> 
+                                        </div>
+                                        <div class="form-group" id="hidden_div2"> 
+                                        	<input type="text" class="form-control" placeholder="Emploi *" th:field="*{emploi}"/> 
+											
+                                        </div>
+                                        <div id="hidden_div1" style="display:none;"> 
+                                        	<div class="form-group" > <input type="text" class="form-control" placeholder="CNE *" th:field="*{cne}"/> </div>
+											<div class="form-group" > <input type="text" class="form-control" placeholder="Etablissement *" th:field="*{etablissement}"/> </div>
+											<div class="form-group" > <input type="text" class="form-control" placeholder="Niveau *" th:field="*{niveau}"/> </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Votre Telephone *" th:field="*{tel}" />
+                                        	<span th:errors="*{tel}"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" onfocus="(this.type='date')" class="form-control" placeholder="Date naissance *" th:field="*{dateNaissance}"/>
+                                        </div>
+                                        <div class="form-group"> 
+                                        	<input type="text" class="form-control" placeholder="Nationalite *" th:field="*{nationalite}"/> 
+											<span th:errors="*{nationalite}"></span>
+                                        </div>
+                                        <div class="form-group"> 
+                                        	<input type="text" class="form-control" placeholder="Adresse *" th:field="*{adresse}"/> 
+											<span ></span>
+                                        </div>
+                                        <input type="submit" class="btnRegister" value="Créer un compte"/>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                </form>
+			<script type="text/javascript">
+			function showDiv(select){
+			   if(select.value=='ETUDIANT'){
+				document.getElementById('hidden_div2').style.display = "none";
+			    document.getElementById('hidden_div1').style.display = "block";
+			   } else if(select.value=='ANNONCEUR') {
+				document.getElementById('hidden_div1').style.display = "none";
+			    document.getElementById('hidden_div2').style.display = "block";
+			   }
+			} 
+			</script>
+            </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>dossiers annonce</h2>
+	<table>
+			<thead>
+				<tr>
+					<th>Date entrée</th>
+					<th>Etablissement</th>
+					<th>Garant nom</th>
+					<th>Garant prénom</th>
+					<th>Garant relation</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr th:each="d:${dossiers}">
+					<td th:text="${d.dateEntree}"></td>
+					<td th:text="${d.etablissement}"></td>
+					<td th:text="${d.garantNom}"></td>
+					<td th:text="${d.garantPrenom}"></td>
+					<td th:text="${d.garantRelation}"></td>
+				</tr>
+			</tbody>
+		</table>
+</body>
+</html>

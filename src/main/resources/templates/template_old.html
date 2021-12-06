@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/stylefooter.css">
+    <link rel="stylesheet" href="../css/style.css">
+   
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <title>StudEx</title>
+  </head>
+  <body>
+    <!-- ----------------------------------HEADER---------------------------------------------- -->
+    <div class="navcustom1 container-fluid">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm  navbar-light"><a class="navbar-brand" href="#"><img src="../images/logo.png" alt=""></a></nav>
+            <nav class="navcustom2 navbar navbar-expand-lg static-top">
+            <div class="container">
+                <!-- Items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="font-size: 20px; color: white; border-left: 0.5px solid white; border-right: 0.5px solid white;" th:href="@{/}">Acceuil</a>
+                    </li>
+                    <li class="nav-item dropdown" style="border: 2px solid #5aa0c5;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                          
+                          <span>
+                              <span style="font-size: 18px; color: white;">Annonces</span>
+                          </span>
+                              
+                          
+                        </a>
+                        <div class="dropdown-menu">
+                        
+                          <a class="dropdown-item" href="/annonces">Offres</a>
+                          
+                          <a class="dropdown-item" href="/annonces">Demandes</a>
+                          
+                        </div>
+                        
+						        <!--<a class="nav-link dropdown-toggle " href="#" style="color: #17a2b8;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						          Annonces
+						        </a>
+						        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						          <a class="dropdown-item" href="/annonces">Offres</a>
+						          <div class="dropdown-divider"></div>
+						          <a class="dropdown-item" href="/demandes">Demandes</a>
+						        </div>
+						        -->
+						      
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="font-size: 20px; color: white; border-left: 0.5px solid white;;border-right: 0.5px solid white;">Comment ça marche ?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="font-size: 20px; color: white; border-right: 0.5px solid white;">...</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <!-- Deposit -->
+                    <li class="dropdeposit nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                          <span>
+                              <span style="font-size: 18px; color: white;">Déposer une annonce</span>
+                          </span>
+                        </a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" th:href="@{formAnnonce}">Déposer une offre</a>
+                          <a class="dropdown-item" th:href="@{formAnnonce}">Déposer une demande</a>
+                        </div>
+                    </li>
+                    <!-- Connect -->
+                    <li class="nav-item dropdown" style="border: 2px solid #5aa0c5;">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        
+                        <span sec:authorize="!isAuthenticated()">
+                            <span style="font-size: 18px; color: white;">S'authentifier</span>
+                        </span>
+                        <span sec:authorize="isAuthenticated()">
+				        	<span style="font-size: 18px; color: white;" sec:authentication="name"></span>
+				        </span>
+                            
+                        
+                      </a>
+                      <div class="dropdown-menu">
+                      
+                        <a class="dropdown-item" th:href="@{login}" sec:authorize="!isAuthenticated()">Se connecter</a>
+                        <a class="dropdown-item" th:href="@{inscription}" sec:authorize="!isAuthenticated()">Créer un compte</a>
+                        
+                        <a class="dropdown-item" th:href="@{logout}" sec:authorize="isAuthenticated()">Se déconnecter</a>
+                        <a class="dropdown-item" th:href="@{getLogedUser}" sec:authorize="isAuthenticated()">Mon Profile</a>
+                      </div>
+                    </li>
+                  </ul>
+
+            </div>
+            </nav>
+        </div>
+    </div><br><br>
+    <!--------------------------------------------------------------------------->
+
+    <section layout:fragment="pageContent">
+	
+		<!--ICI OU ON AJOUTE LES AUTRES PAGES-->
+
+	</section>
+
+
+
+
+    <!----------------------------------FOOTER------------------------------->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Entreprise</h4>
+                    <ul>
+                        <li><a href="#">A propos</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">...</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Trouver l'aide</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Comment ça marche ?</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">...</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>_____</h4>
+                    <ul>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">...</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>suivez nous</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-------------------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

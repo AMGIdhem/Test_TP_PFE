@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Quartiers</title>
+</head>
+<body>
+	<form th:action="@{addQuartier}" method="post">
+		<label> Ajouter un quartier  </label> 
+		<input type="text" name="quartier">
+		<input type="hidden" name="id" th:value="${id}">
+		<button type="submit">Ajouter</button>
+	</form>
+	<table>
+			<thead>
+				<tr>
+					<th>Nom du quartier</th>
+					
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="q:${quartiers}">
+					<td th:text="${q.nom}"></td>
+					<td><a onclick="return confirm('Etes vous sure ?')" th:href="@{supprimerQuartier(id=${q.id}, id2=${id})}">Supprimer</a></td>
+				</tr>
+				
+			</tbody>
+		</table>
+</body>
+</html>

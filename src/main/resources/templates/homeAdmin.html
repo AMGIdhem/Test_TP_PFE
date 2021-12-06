@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>Home Admin</title>
+</head>
+<body>
+<div layout:fragment="pageContent" class="container">
+<!-- FIRST CARD -->
+<div class="card text-center mb-3">
+  <div class="card-header">
+    <h5 class="card-title">Espace Administrateur</h5>
+  </div>
+  <div class="card-body">
+  <img class="card-img" src="../../images/admin_zone.jpg">
+    
+    <h4 class="card-text pt-3">Bienvenue a votre espace Administrateur ou vous pouvez gérer les utilisateurs, les annonces et les demandes</h4>
+   	
+  </div>
+  <div class="card-footer text-muted">
+    
+  </div>
+</div>
+
+
+<div class="row">
+	<!-- 1-second card -->
+	<div class="col-md-6">
+		<div class="card text-center ">
+		  <div class="card-header">
+		       Gestion Des Annonceurs
+		  </div>
+		  <div class="card-body">
+		    <h1 class="card-title"><i class="fas fa-user-tie"></i></h1>
+		    <p class="card-text">Ici vous pouvez gérer les différents utilisateurs annonceurs qui peuvent poster leurs annonces en les consultant avec la possibilite de supprimer un compte etudiant</p>
+		    <a href="http://localhost:8080/admin/getAllUsersAnnonceur" class="btn btn-primary">Gérer</a>
+		  </div>
+		  <div class="card-footer text-muted">
+		    
+		  </div>
+		</div>
+	</div>
+	<!-- 1-second card -->
+	<div class="col-md-6">
+		<div class="card text-center ">
+		  <div class="card-header">
+		      Gestion Des Etudiants
+		  </div>
+		  <div class="card-body">
+		    <h1 class="card-title"><i class="fas fa-user-graduate"></i> </h1>
+		    <p class="card-text">Ici vous pouvez gérer les différents utilisateurs étudiants qui envoyer des demandes aux annonceurs en les consultant avec la possibilite de supprimer un compte etudiant.</p>
+		    <a href="http://localhost:8080/admin/getAllUsersEtudiant" class="btn btn-primary">Gérer</a>
+		  </div>
+		  <div class="card-footer text-muted">
+		   
+		  </div>
+		</div>
+	</div>
+	
+	
+	
+</div>
+
+
+<div class="row pt-3">
+	<!-- 1-second card -->
+	<div class="col-md-6">
+		<div class="card text-center ">
+		  <div class="card-header">
+		       Gestion Des Annonces
+		  </div>
+		  <div class="card-body">
+		    <h1 class="card-title"><i class="fas fa-tasks"></i></h1>
+		    <p class="card-text">Ici vous pouvez gérer annonces de logement publiées par les utilisateurs annonceurs en les consultant avec la possibilite de supprimer un compte etudiant</p>
+		    <a href="http://localhost:8080/admin/getAllUsersAnnonceur" class="btn btn-primary">Gérer</a>
+		  </div>
+		  <div class="card-footer text-muted">
+		    
+		  </div>
+		</div>
+	</div>
+	<!-- 1-second card -->
+	<div class="col-md-6">
+		<div class="card text-center ">
+		  <div class="card-header">
+		      Gestion Des Demandes 
+		  </div>
+		  <div class="card-body">
+		    <h1 class="card-title"><i class="fas fa-bullhorn"></i></h1>
+		    <p class="card-text">Ici vous pouvez gérer les demandes publiés par les utilisateurs étudiants correspandants à une annonce en les consultant avec la possibilite de supprimer un compte etudiant.</p>
+		    <a href="http://localhost:8080/admin/getAllUsersEtudiant" class="btn btn-primary">Gérer</a>
+		  </div>
+		  <div class="card-footer text-muted">
+		 
+		  </div>
+		</div>
+	</div>
+	
+	
+	
+</div>
+
+
+
+
+
+	<!--div>
+	<h1>hi from home admin</h1>
+	<ul class="navbar-nav ml-auto">
+                    <li class="dropdeposit nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                          <span>
+                              <span style="font-size: 18px;">Déposer une annonce</span>
+                          </span>
+                        </a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" th:href="@{getAllUsersAnnonceur}">Annonceurs</a>
+                     	  <a class="dropdown-item" th:href="@{getAllUsersEtudiant}">Etudiants</a>
+                        </div>
+                    </li>
+    </ul>
+
+	<h2> <a class="dropdown-item" th:href="@{getAllVilles}">Gérer villes </a> </h2>
+	</div-->
+</div>
+</body>
+</html>

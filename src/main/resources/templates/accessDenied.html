@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div layout:fragment="pageContent" class="container">
+	<h2>Veuillez vous connecter avec un compte Etudiant afin de d�poser votre dossier.</h2>
+
+
+Pas de compte ? <a href="<c:url value="/homepage.html" /> Inscrivez-vous ! </a>
+
+Cliquez <a href="<c:url value="/homepage.html" /> "> ici </a> pour vous connecter.
+</div>
+</body>
+</html>

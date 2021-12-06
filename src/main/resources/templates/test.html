@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<select id="test" name="form_select" onchange="showDiv(this)">
+   <option value="ANNONCEUR">Annonceur</option>
+   <option value="ETUDIANT">Etudiant</option>
+</select>
+<div id="hidden_div" style="display:none;">Hello hidden content ETUDIANT</div>
+
+<script type="text/javascript">
+function showDiv(select){
+   if(select.value=='ETUDIANT'){
+    document.getElementById('hidden_div').style.display = "block";
+   } else{
+    document.getElementById('hidden_div').style.display = "none";
+   }
+} 
+</script>
+</body>
+</html>

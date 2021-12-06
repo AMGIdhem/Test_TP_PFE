@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="card m-5" th:each="a:${annonces}">
+			<div class="row card-header">
+				<div class="col-md-10" th:text="${a.titre}"></div>
+				<div class="col-md-1"><button type="button" class="btn btn-warning" style="height:30px;width:200px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Profil d'annonceur</a></button></div>
+			</div>
+			
+			<div class="row card-body">
+				<!--IMAGE-->
+				<div class="col-md-5"><img style="border: 3px solid #555;;" th:src="@{getPhoto(id=${a.id})}" width="500" height="300"></div>
+				<!--INPUTS-->
+				<div class="col-md-5 ml-3">
+					<div  th:text="${a.quartier.nom}"></div>
+					<div  th:text="${a.typeLogement.type}"></div><br><br>
+					
+					
+					<div  th:text="${a.description}"></div>
+					<!--boutton de suppression (on va utiliser thymeleaf secutiyy extra pour cacher selon role)-->	
+				</div>
+				<!--BOUTTONS-->
+				<div class="col-md-1">
+				<div  th:text="${a.prix}"></div>
+				<button type="button" class="btn btn-info" style="height:40px;width:200px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Plus d'infos</a></button><br>
+				<button type="button" class="btn btn-primary mt-2" style="height:100px;width:200px"><a th:href="@{etudiant/deposer(id=${a.id})}" style="color: white;">Déposer <br> mon dossier</a></button>
+								
+					
+				</div>	
+			</div>
+			
+					
+			<div class="card-footer">
+						
+					
+					
+					
+					
+			
+		
+		</div>
+	</div>
+</body>
+</html>

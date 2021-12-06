@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+			<thead>
+				<tr>
+					<th>Nom de la ville</th>
+					
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr th:each="v:${villes}">
+					<td th:text="${v.ville}"></td>
+					<td><a th:href="@{getQuartiersByVille(id=${v.id})}">Gérer ses quartiers</a></td>
+				</tr>
+			</tbody>
+		</table>
+</body>
+</html>

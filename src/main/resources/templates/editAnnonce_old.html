@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div layout:fragment="pageContent" class="container">
+<form th:action="@{editAnnonce}" method="post" th:object="${annonce}" enctype="multipart/form-data">
+<!-- 		<label> Type Logement  </label>  -->
+<!-- 		<select name="typeLogement"> -->
+<!-- 			<option th:each="t:${types}" th:value="${t.id}" th:text="${t.type}"></option> -->
+<!-- 		</select> <br> -->
+<!-- 		<label> Quartier </label> -->
+<!-- 		<select name="quartier"> -->
+<!-- 			<option th:each="q:${quartiers}" th:value="${q.id}" th:text="${q.nom}"></option> -->
+<!-- 		</select> <br> -->
+		<input type="hidden" name="idOldAn" th:value="${idOldAn}"/> <br>
+		<label> Adresse </label> <input type="text" th:field="*{adresse}"/> <br>
+		<label> Titre de l'annonce </label> <input type="text" th:field="*{titre}"/> <br>
+		<label> Prix </label> <input type="text" th:field="*{prix}"/> <br>
+		<label> Description </label> <input type="text" th:field="*{description}"/> <br>
+		<label> Telephone </label> <input type="text" th:field="*{tel}"/> <br>
+		<label> Etage </label> <input type="text" th:field="*{etage}"/> <br>
+		<label> Meuble </label> <input type="text" th:field="*{meuble}"/> <br>
+		<label> Surface </label> <input type="text" th:field="*{surface}"/> <br>
+		<label> Nombre de personnes </label> <input type="text" th:field="*{nombrePersonnes}"/> <br>
+<!-- 		<label>Photo:</label> <input type="file" name="picture"/> <br> -->
+<!-- 		<label>Photo 1:</label> <input type="file" name="picture1"/> <br> -->
+<!-- 		<label>Photo 2:</label> <input type="file" name="picture2"/> <br> -->
+		<button type="submit">Modifier</button>
+	</form>
+
+</div>
+
+</body>
+</html>

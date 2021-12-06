@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>Se connecter</title>
+</head>
+<body>
+
+<div layout:fragment="pageContent" class="container">
+
+	<form th:action="@{login}" method="post" >
+		<label>Username : </label>
+		<input type="text" name="username" /> <br/>
+		
+		<label>Mot de passe : </label>
+		<input type="password" name="password" />
+		<input type="submit" value="valider" />
+	</form>
+
+</div>
+</body>
+</html>

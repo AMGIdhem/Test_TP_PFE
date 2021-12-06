@@ -1,0 +1,160 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Formulaire Annonce</title>
+                                <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>body {
+    background-color: #eee
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0rem rgba(0, 123, 255, .25)
+}
+
+.btn-secondary:focus {
+    box-shadow: 0 0 0 0rem rgba(108, 117, 125, .5)
+}
+
+.close:focus {
+    box-shadow: 0 0 0 0rem rgba(108, 117, 125, .5)
+}
+
+.mt-200 {
+    margin-top: 200px
+}
+*{
+	   	font-family:cursive
+	   }
+</style>
+                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+                                <script type='text/javascript'>
+                                document.addEventListener("DOMContentLoaded", function(event) { 
+    document.getElementById("clickedbtn").click();
+ });
+                                $(document).ready(function(){
+
+$('#smartwizard').smartWizard({
+selected: 0,
+theme: 'arrows',
+autoAdjustHeight:true,
+transitionEffect:'fade',
+showStepURLhash: false,
+
+});
+
+});</script>
+                            </head>
+                            
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <link href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/smart_wizard.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/smart_wizard_theme_arrows.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/jquery.smartWizard.min.js"></script>
+<div class="container">
+<form th:action="@{saveAnnonce}" method="post" th:object="${annonce}" enctype="multipart/form-data">
+    <div class="row d-flex justify-content-center mt-200"> <button id="clickedbtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Ouvrir Formulaire d'ajout </button> </div> <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="far fa-edit"></i>   Formulaire de depot d'annonce</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                </div>
+                <div class="modal-body">
+                    <div id="smartwizard">
+                        <ul>
+                            <li><a href="#step-1">Etape 1<br /><small>Quartier et Type</small></a></li>
+                            <li><a href="#step-2">Etape 2<br /><small>Contact</small></a></li>
+                            <li><a href="#step-3">Etape 3<br /><small>Emplacement</small></a></li>
+                            <li><a href="#step-4">Etape 4<br /><small>Images</small></a></li>
+                            <li><a href="#step-5">Etape 5<br /><small>Description</small></a></li>
+                            <li><a href="#step-6">Etape 6<br /><small>Merci</small></a></li>
+                        </ul>
+                        <div class="mt-4">
+                            <div id="step-1">
+                                <div class="row">
+                                    <div class="col-md-6"> <label> Type Logement  </label> 
+									<select class="form-control" name="typeLogement" required>
+										<option th:each="t:${types}" th:value="${t.id}" th:text="${t.type}"></option>
+									</select> </div>
+							                                    <div class="col-md-6"> <label> Quartier </label>
+									<select class="form-control" name="quartier" >
+										<option th:each="q:${quartiers}" th:value="${q.id}" th:text="${q.nom}"></option>
+									</select> </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12"> <label> Adresse </label> <input class="form-control" type="text" th:field="*{adresse}" required/> </div>
+                                    
+                                </div>
+                            </div>
+                            <!-------------------------------->
+                            <div id="step-2">
+                                <div class="row">
+                                    <div class="col-md-6"> <label> Titre de l'annonce </label> <input class="form-control" type="text" th:field="*{titre}" required/> </div>
+                                    <div class="col-md-6"> <label> Nombre de personnes </label> <input class="form-control" type="number" th:field="*{nombrePersonnes}" required/> </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <!--div class="col-md-6"> <label> Prix </label> <input class="form-control" type="text" th:field="*{prix}" required/> </div-->
+                                    <div class="col-md-6"> <label> Adresse Email </label> <input class="form-control" type="text" th:field="*{email}" required/> </div>
+                                    <div class="col-md-6"> <label> Telephone </label> <input class="form-control"type="text" th:field="*{tel}" required/> </div>
+                                </div>
+                            </div>
+                            <div id="step-3">
+                                <div class="row">
+                                    <div class="col-md-6"> <label> Etage </label> <input class="form-control" type="text" th:field="*{etage}" required/> </div>
+                                    <div class="col-md-6"> <label> Meublé </label> <input class="form-control" type="text" th:field="*{meuble}" required/> </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6"> <label> Surface (m²) </label> <input class="form-control" type="text" th:field="*{surface}" /> </div>
+                                    <div class="col-md-6"> <label> Prix (mensuel) </label> <input class="form-control" type="text" th:field="*{prix}" required/> </div>
+                                </div>
+                            </div>
+                            <div id="step-4" class="">
+                                <div class="row">
+                                    <div class="col-md-12"> <label>Photo 1:</label> <input class="form-control" type="file" name="picture" required/> </div>
+                                    
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12"> <label>Photo 2:</label> <input class="form-control" type="file" name="picture1" required/> </div>
+                                    
+                                </div>
+                                <div class="row mt-3">
+                                    
+                                    <div class="col-md-12"> <label>Photo 3:</label> <input class="form-control" type="file" name="picture2" required/> </div>
+                                </div>
+                            </div>
+                            <div id="step-5" class="">
+                                <div class="row">
+                                	
+                                    <div class="col-md-12"> <label>Description :</label> <textarea class="form-control" name="textarea" th:field="*{description}" rows="5" cols="30" placeholder="Votre description." required></textarea> </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div id="step-6" class="">
+                                <div class="row">
+                                    <div class="col-md-12"> <span>Merci d'avoir utiliser notre plateforme, Bonnce chance.</span> </div>
+                                </div>
+                               
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 d-flex justify-content-center mt-200">
+    	<div class="col-md-4"><button class="form-control btn btn-success" type="submit">Publier l'annonce</button></div>
+    </div>
+    </form>
+</div>
+                            </body>
+                        </html>

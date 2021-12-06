@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Insert title here</title>
+<style>
+*{
+font-family:cursive
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f3f5;
+  }
+  /*##################################################viewport######################*/ 
+  .viewport-80 {
+    min-height: 80vh;
+  }
+  /*###############################banener###################################*/
+  #banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/space_user_1.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  #banner .banner-title {
+    font-style: italic;
+  }
+  #banner .banner-link {
+    text-decoration: none;
+    font-size: 20px;
+    padding: 15px 25px;
+    border: 2px solid #25d2f1;
+    background-color: transparent;
+    border-radius: 0;
+    color: #25d2f1;
+  }
+  #banner .banner-link:hover {
+    border: 2px solid #f5f3f5;
+    background-color: #f5f3f5;
+  }
+  /*#############################banner icons################################*/
+  #banner-icons {
+    margin-top: -40px;
+  }
+  #banner-icons ul {
+    list-style-type: none;
+  }
+  #banner-icons li {
+    padding: 10px;
+    margin: 0 3px;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  #banner-icons .fa {
+    font-size: 32px;
+  }
+  #banner-icons a {
+    color: #f5f3f5;
+    text-decoration: none;
+    display: block;
+  }
+  #banner-icons a:hover {
+    color: #25d2f1;
+  }
+  /*####################################title####################################*/
+  .title .fa {
+    font-size: 60px;
+    color: #25d2f1;
+  }
+  .title .title-text {
+    padding-left: 15px;
+    border-left: 3px solid #ced0ce;
+  }
+  /*###################################about-us##########################################*/
+  
+  #about-us {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(images/current-projects-1.jpeg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
+  
+  }
+  
+  
+  #about-us a {
+    text-decoration: none;
+    color: #CED0CE;
+  }
+  
+  #about-us .card-header {
+    background-color: #25d2f1;
+  }
+
+  </style>
+</head>
+<body>
+<div layout:fragment="pageContent" class="container">
+	
+	
+	<!------------------------------------------------>
+	<section class="py-5" id="banner">
+    <div class="container">
+      <div class="row align-items-center viewport-80">
+        <div class="col-10 mx-auto text-center">
+          <h1 class="display-2 text-uppercase text-white banner-title">Espace Annonceur</h1><br><br>
+          
+          <a th:href="@{profile}"  class="btn banner-link m-9"><i class="fa fa-user" aria-hidden="true"></i>   Consulter Mon Profile</a><br><br>
+          <a th:href="@{formAnnonce0}" class="btn banner-link m-3"><i class="fa fa-bullhorn" aria-hidden="true"></i>   Ajouter Une Annonce</a>
+          <a th:href="@{mesAnnonces}" class="btn banner-link m-3"><i class="fa fa-indent" aria-hidden="true"></i>   Gérer Mes Annonces</a>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--end of banner-->
+
+  
+
+  <!--html_old-->
+  
+  
+
+
+
+
+
+  
+  <!--#######################################about us section#################-->
+
+
+  <section id="about-us" class="py-5">
+    <div class="container">
+
+      <!--	title row-->
+      <div class="row">
+        <div class="col d-flex title mb-5">
+          <i class="fa fa-user-o mr-3"></i>
+          <div class="title-text">
+            <h1 class="text-uppercase text-white">A propos de nous</h1>
+            <h4 class="text-capitalized text-muted">StudEx site de logement étudiant</h4>
+          </div>
+        </div>
+      </div>
+      <!--		end of title row-->
+
+
+
+
+
+
+
+      <div class="row align-items-center">
+
+        <div class="col-md-6 my-5">
+          <!--				accordion-->
+          <div id="accordion" role="tablist">
+            <div class="card">
+              <div class="card-header" role="tab" id="headingOne">
+                <h5 class="mb-0 text-uppercase text-center">
+                  <a style="color:white" data-toggle="collapse" href="#collapseOne">
+                    <i class="fa fa-hand-o-down mr-1"></i>
+
+                    Appuyez ici pour plus d'informations
+                  </a>
+                </h5>
+              </div>
+              <!--card body -->
+              <div id="collapseOne" class="collapse show" role="tabpanel" data-parent="#accordion">
+                <div class="card-body">
+                  Bienvenue a votre espace Annonceur ou vous pouvez gérer votre Compte et voir vos annonces
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" role="tab" id="headingTwo">
+                <h5 class="mb-0 text-uppercase text-center">
+                  <a style="color:white" class="collapsed" data-toggle="collapse" href="#collapseTwo">
+                    <i class="fa fa-hand-o-down mr-1"></i>
+
+                    Appuyez ici pour plus d'informations
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  Vous pouvez aussi consulter les annonces publiés par vous-même
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" role="tab" id="headingThree">
+                <h5 class="mb-0 text-uppercase text-center">
+
+                  <a style="color:white" class="collapsed" data-toggle="collapse" href="#collapseThree">
+                    <i class="fa fa-hand-o-down mr-1"></i>
+
+                    Appuyez ici pour plus d'informations </a>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                  Comme vous pouvez consulter les demandes déposés par les différents utilisateurs concernant vos annonces de logement
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img src="../images/space_user_2.jpg" alt="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+	
+	
+</div>
+</body>
+</html>

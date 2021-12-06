@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>Mes annonces</title>
+</head>
+<body>
+<div layout:fragment="pageContent" class="container">
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Type Logement</th>
+					<th>Quartier</th>
+					<th>Adresse</th>
+					<th>Titre</th>
+					<th>Prix</th>
+					<th>Description</th>
+					<th>Photo</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr th:each="a:${mesAnnonces}">
+					<td th:text="${a.id}"></td>
+					<td th:text="${a.typeLogement.type}"></td>
+					<td th:text="${a.quartier.nom}"></td>
+					<td th:text="${a.adresse}"></td>
+					<td th:text="${a.titre}"></td>
+					<td th:text="${a.prix}"></td>
+					<td th:text="${a.description}"></td>
+					<td>
+						<img th:src="@{getPhoto(id=${a.id})}" width="100" height="100">
+					</td>
+					<td><a onclick="return confirm('Etes vous sure ?')" th:href="@{supprimer(id=${a.id})}">Supprimer</a></td>
+					<td><a th:href="@{edit(id=${a.id})}">Edit</a></td>
+					<td><a th:href="@{getDossiers(id=${a.id})}">Dossiers</a></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>STUDEX</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+<script>
+	function ShowAndHideTel() {
+	    var tel = document.getElementById('TelSection');
+	    if (tel.style.display == 'none') {
+	        tel.style.display = 'block';
+	    } else {
+	        tel.style.display = 'none';
+	    }
+	    
+	}
+	function ShowAndHideAdresse() {
+	    var adresse = document.getElementById('AdresseSection');
+	    if (adresse.style.display == 'none') {
+	        adresse.style.display = 'block';
+	    } else {
+	        adresse.style.display = 'none';
+	    }
+	    
+	}
+	
+	
+	
+	
+</script>
+<style>
+*{
+font-family:cursive
+}
+</style>
+</head>
+<body>
+
+<div layout:fragment="pageContent" class="container spacer">
+
+
+	<a th:href="@{login}"> Etudiant </a>
+	<a th:href="@{login}"> Annonceur </a>
+	<a th:href="@{inscription}"> Inscription </a>
+	<h1>STUDEX</h1>
+	<div class="container spacer">
+		<form th:action="@{search}" method="get">
+			<div class="form-group">
+				<label>Mot Clé </label> <input type="text" name="motCle" />
+				<label>Prix min </label> <input type="text" name="prixMin"/>
+				<label>Prix max </label> <input type="text" name="prixMax" />
+				<select name="quartier">
+					<option th:each="q:${quartiers}" th:value="${q.id}" th:text="${q.nom}"></option>
+				</select> <br>
+				<button type="submit">Chercher</button>
+			</div>
+		</form>
+	</div>
+	
+		<div class="card m-5" th:each="a:${annonces}">
+			<div class="card-header">
+			<div class="row">
+			<div style="font-size: 25px; font-weight:bold"  class="col-md-10" th:text="${a.titre}"></div>
+				<div style="font-style: oblique;font-size: 25px;" class="col"></div>
+			</div>
+				
+				<!--<div class="col-md-1"><button type="button" class="btn btn-warning" style="height:30px;width:200px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Profil d'annonceur</a></button></div>-->
+			</div>
+			
+			<div class="card-body">
+			<div class="row">
+			
+			
+			
+			
+				<!--IMAGE-->
+				<div class="col-md-5"><img style="border: 3px solid #555; margin-bottom: 10px;" th:src="@{getPhoto(id=${a.id})}" width="400" height="300"></div>
+				<!--INPUTS-->
+				<div class="col-md-5">
+				
+				<table>
+					<tr style="font-size:20px;">
+			  			<td><b><div style="font-style: oblique;" th:text="${a.prix + ' MAD / mois'}"></div></b></td>
+			  		</tr>
+			  		<tr style="font-size:20px;">
+			  			<td><br><div style="font-style: oblique;" th:text="${a.quartier.ville.ville} + ', ' + ${a.quartier.nom}"></div></td>
+			  		</tr>
+			  		<tr style="font-size:20px;">
+			  			<td><br><div style="font-style: oblique;" th:text="${a.typeLogement.type} + ' - ' + ${a.surface} + ' m²'"></div><br></td>
+			  		</tr>
+			  		<tr id="TelSection" style="font-size:20px;display:none;">
+			  			<td width="55%" class="p-2">Téléphone-</td> <td><b><div style="font-style: oblique;" th:text="${a.tel}"></div></b></td>
+			  		</tr><br>
+			  		<tr id="AdresseSection" style="font-size:20px;display:none;">
+			  			<td width="55%" class="p-2">Email-</td> <td><b><div style="font-style: oblique;" th:text="${a.email}"></div></b></td>
+			  		</tr>
+			  		
+
+			  		
+			  		
+			  		
+			  		
+			  		
+	  		</table>
+				
+			
+				
+				
+					
+					
+					
+					
+					<!-- div  th:text="${a.tel}"></div-->
+					
+					
+					<!-- div  th:text="${a.description}"></div-->
+					<!--boutton de suppression (on va utiliser thymeleaf secutiyy extra pour cacher selon role)-->	
+				</div>
+				<!--BOUTTONS-->
+				<div class="col-md-1">
+				
+				<button type="button" class="btn btn-warning" style="height:40px;width:150px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Plus d'infos</a></button><br>
+				<button type="button" class="btn btn-info mt-2" style="height:100px;width:150px"><a th:href="@{etudiant/deposer(id=${a.id})}" style="color: white;">Déposer <br> mon dossier</a></button>
+				<button onclick="ShowAndHideTel()" type="button" class="btn mt-2" style="background-color:white;color:black;border: 2px solid green;height:40px;width:150px">Télephone</button>
+				<button onclick="ShowAndHideAdresse()" type="button" class="btn btn-success mt-2" style="background-color:white;color:black;border: 2px solid green;height:50px;width:150px">Email</button>
+								
+					
+				</div>	
+			</div>
+			
+				</div>	
+			<div class="card-footer ">
+						
+					
+					
+					
+					
+			
+		
+		</div>
+		
+		
+	</div>
+	
+	<!--barre de pagination-->
+	<div class="container">
+		<div class="card m-5">
+			<div class="card-body">
+				<ul class="nav nav-pills">
+					<li th:each="page,status:${pages}"><!--status qui va nou permettre de recuperer indice de page-->
+					<!--au lieu de faire "patients?page=1 on fait ecriture ci dessous"-->
+					
+						<!-- pour affichage sans recherche
+						<a  th:class="${status.index==currentPage?'btn btn-primary':'btn'}" class="btn" 
+						th:href="@{patients(page=${status.index})}" th:text="${status.index}"></a>
+						-->
+						
+						<a  th:class="${status.index==currentPage?'btn btn-primary':'btn'}" class="btn" th:href="@{annonces(page=${status.index},size=${size})}" th:text="${status.index}+1"></a>
+						
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	
+		
+<!-- 		<ul class="nav nav-pills"> -->
+<!-- 			<li th:class="${p==pageCourante}?active:''" th:each="p:${pages}"> -->
+<!-- 				<a th:text="${p}" th:href="@{Index(page=${p},motCle=${motCle})}"></a> -->
+<!-- 			</li> -->
+<!-- 		</ul> -->
+	
+
+	
+	</div>
+	
+	
+</body>
+</html>

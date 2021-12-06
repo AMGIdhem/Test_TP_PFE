@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>STUDEX</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+</head>
+<body>
+
+<div layout:fragment="pageContent" class="container">
+
+
+	<a th:href="@{login}"> Etudiant </a>
+	<a th:href="@{login}"> Annonceur </a>
+	<a th:href="@{inscription}"> Inscription </a>
+	<h1>STUDEX</h1>
+	<div class="container spacer">
+		<form th:action="@{search}" method="get">
+			<div class="form-group">
+				<label>Mot Clé:</label> <input type="text" name="motCle" th:value="${motCle}"/>
+				<button type="submit">Chercher</button>
+			</div>
+		</form>
+	</div>
+	<div class="container spacer">
+	<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Photo</th>
+					<th>Titre</th>
+					<th>Type Logement</th>
+					<th>Quartier</th>
+					<th>Prix</th>
+					<th>Description</th>
+					
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr th:each="a:${annonces}">
+					<td>
+						<img th:src="@{getPhoto(id=${a.id})}" width="100" height="100">
+					</td>
+					<td th:text="${a.titre}"></td>
+					<td th:text="${a.typeLogement.type}"></td>
+					<td th:text="${a.quartier.nom}"></td>
+					<td th:text="${a.prix}"></td>
+					<td th:text="${a.description}"></td>
+					
+					<td><a th:href="@{getAnnonce(id=${a.id})}">+ d'infos</a></td>
+					<td><a th:href="@{etudiant/deposer}">Déposer mon dossier</a></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<div class="container">
+<!-- 		<ul class="nav nav-pills"> -->
+<!-- 			<li th:class="${p==pageCourante}?active:''" th:each="p:${pages}"> -->
+<!-- 				<a th:text="${p}" th:href="@{Index(page=${p},motCle=${motCle})}"></a> -->
+<!-- 			</li> -->
+<!-- 		</ul> -->
+	</div>
+</div>
+</body>
+</html>
